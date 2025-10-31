@@ -1,0 +1,5 @@
+{
+  "name": "AI Query Assistant",
+  "description": "A sleek and responsive web page where users can ask queries and get instant answers, powered by Google's Gemini API. Designed for easy deployment on platforms like GitHub Pages.",
+  "requestFramePermissions": []
+}
