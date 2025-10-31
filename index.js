@@ -1,18 +1,19 @@
-import { getGeminiResponse } from './services/geminiService';
+// This application uses pure JavaScript. The index.tsx file has been removed.
+import { getGeminiResponse } from './services/geminiService.js';
 
 document.addEventListener('DOMContentLoaded', () => {
-  const form = document.getElementById('query-form') as HTMLFormElement;
-  const queryInput = document.getElementById('query-input') as HTMLTextAreaElement;
-  const submitButton = document.getElementById('submit-button') as HTMLButtonElement;
-  const loadingIndicator = document.getElementById('loading-indicator')!;
-  const errorMessageContainer = document.getElementById('error-message')!;
-  const errorText = document.getElementById('error-text')!;
-  const answerContainer = document.getElementById('answer')!;
-  const placeholder = document.getElementById('placeholder')!;
+  const form = document.getElementById('query-form');
+  const queryInput = document.getElementById('query-input');
+  const submitButton = document.getElementById('submit-button');
+  const loadingIndicator = document.getElementById('loading-indicator');
+  const errorMessageContainer = document.getElementById('error-message');
+  const errorText = document.getElementById('error-text');
+  const answerContainer = document.getElementById('answer');
+  const placeholder = document.getElementById('placeholder');
 
   let isLoading = false;
 
-  const setLoading = (loading: boolean) => {
+  const setLoading = (loading) => {
     isLoading = loading;
     loadingIndicator.classList.toggle('hidden', !loading);
     queryInput.disabled = loading;
@@ -26,15 +27,16 @@ document.addEventListener('DOMContentLoaded', () => {
     updateSubmitButtonState();
   };
 
-  const showError = (message: string) => {
+  const showError = (message) => {
     errorText.textContent = message;
     errorMessageContainer.classList.remove('hidden');
     placeholder.classList.add('hidden');
     answerContainer.classList.add('hidden');
   };
   
-  const showAnswer = (text: string) => {
-    answerContainer.textContent = text;
+  const showAnswer = (text) => {
+    // Use innerText to preserve line breaks from the response.
+    answerContainer.innerText = text;
     answerContainer.classList.remove('hidden');
     placeholder.classList.add('hidden');
     errorMessageContainer.classList.add('hidden');
